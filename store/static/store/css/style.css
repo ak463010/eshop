@@ -1,0 +1,21 @@
+.products img{
+  width: 200px;
+  height: 240px;
+  margin: auto;
+  margin-top: 4px;
+}
+
+.view-product img {
+  width: 70%;
+  height: 70%;
+}
+
+@media only screen and (max-width: 600px) {
+  .products img{
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    margin-top: 4px;
+  }
+  
+}

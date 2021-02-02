@@ -1,0 +1,28 @@
+{% extends 'store/base.html' %}
+
+{% block title %}{{ block.super }} :: Login {% endblock title %}
+{% block content %}
+<form action="{% url 'login' %}" method="POST" novalidate> {% csrf_token %}
+  <div class="row pt-4">
+    <div class="col-md-4 mx-auto border rounded pt-4 pb-4">
+      <h2 class="alert alert-light text-center border rounded">Login Here</h2>
+      {% if error %}
+      <div class="alert alert-danger text-center" role="alert">
+        <h5>{{ error }}</h5>
+      </div>
+      {% endif %}
+      <div class="form-group">
+        <label for="">Email</label>
+        <input type="text" value="{{ values.email }}" name="email" id="" class="form-control form-control-sm" placeholder="example@gmail.com">
+      </div>
+      <div class="form-group">
+        <label for="">Password</label>
+        <input type="password" value="" name="password" id="" class="form-control form-control-sm" placeholder="********">
+      </div>
+      <div class="form-group">
+        <input class="btn btn-info btn-block" type="submit" value="Login">
+      </div>
+    </div>
+  </div>
+</form>
+{% endblock content %}

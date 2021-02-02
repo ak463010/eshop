@@ -1,0 +1,41 @@
+{% extends 'store/base.html' %}
+{% load cart %}
+{% load costum_filter %}
+{% block title %}Cart{% endblock title %}
+{% block content %}
+<div class="row">
+    <div class="col-10 border mx-auto mt-4 pt-4 pb-4">
+        <h1 class="display-4 mb-4">Your Oders</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>SR#</th>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for oder in oders %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td><img style="width: 40px;" src="{{ oder.product.image.url }}" alt="{{ product.name }}"></td>
+                    <td>{{ oder.product.name }}</td>
+                    <td>{{ oder.quantity }}</td>
+                    <td>{{ oder.price|rupee }}</td>
+                    <td>{{ oder.price|multiply:oder.quantity }}</td>
+                    {% if oder.status %}
+                    <td><small class="badge badge-success">Completed</small></td>
+                    {% else %}
+                    <td><small class="badge badge-warning">Pending</small></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock content %}
